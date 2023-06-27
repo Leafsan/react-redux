@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToDo, deleteToDo } from "../store";
+import ToDo from "../components/ToDo";
 
 function Home() {
   const [text, setText] = useState("");
@@ -34,25 +35,11 @@ function Home() {
       </form>
       <ul>
         {toDos.map((element) => (
-          <li key={element.id} id={element.id}>
-            {element.text}
-            <button onClick={onClick}>DEL</button>
-          </li>
+          <ToDo text={element.text} onBtnClick={onClick} id={element.id} />
         ))}
       </ul>
     </>
   );
 }
-
-// function mapStateToProps(state) {
-//   return { toDos: state };
-// }
-//
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     addToDo: (text) => dispatch(actionCreators.addToDo(text)),
-//     deleteToDo: (id) => dispatch(actionCreators.deleteToDo(id)),
-//   };
-// }
 
 export default Home;
